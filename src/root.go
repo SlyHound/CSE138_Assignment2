@@ -1,7 +1,7 @@
 package main
 
 import (
-	"utility"
+	"src/utility"
 
 	"github.com/gin-gonic/gin"
 )

@@ -1,7 +1,13 @@
-FROM golang:1.14
-WORKDIR /go/src
-COPY ./CSE138* /go/src
-RUN go get -d -v ./...
-RUN go install -v ./...
+FROM golang:latest
 
-CMD ["CSE138_Assignment2"]
+WORKDIR /application
+
+COPY go.mod .
+COPY go.sum .
+
+RUN go mod download
+COPY . .
+
+RUN go build
+
+CMD ["./src"]

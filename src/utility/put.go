@@ -33,8 +33,8 @@ func PutRequest(r *gin.Engine, dict map[string]string) {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Key is too long", "message": "Error in PUT"})
 		} else {
 			// if a key-value pair already exists, then replace the old value //
-			if value, exists := dict[key]; exists {
-				dict[key] = value
+			if _, exists := dict[key]; exists {
+				dict[key] = d.Value
 				c.JSON(http.StatusOK, gin.H{"message": "Updated successfully", "replaced": true})
 			} else { // otherwise we insert a new key-value pair //
 				dict[key] = d.Value
