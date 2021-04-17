@@ -2,7 +2,6 @@ package utility
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"strings"
@@ -22,12 +21,10 @@ func PutRequest(r *gin.Engine, dict map[string]string) {
 	var d Dict
 	r.PUT("/key-value-store/:key", func(c *gin.Context) {
 		key := c.Param("key")
-		fmt.Println("attempting to satisfy a PUT request")
 		body, _ := ioutil.ReadAll(c.Request.Body)
 		strBody := string(body[:])
 		json.NewDecoder(strings.NewReader(strBody)).Decode(&d)
 		defer c.Request.Body.Close()
-		fmt.Printf("key: %s, value: %s, body: %s", key, d.Value, strBody)
 		if strBody == "{}" {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Value is missing", "message": "Error in PUT"})
 		} else if len(key) > keyLimit {
