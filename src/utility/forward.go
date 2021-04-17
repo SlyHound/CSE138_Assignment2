@@ -5,6 +5,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"io/ioutil"
+	"encoding/json"
 )
 
 type JSON struct {
@@ -68,7 +70,9 @@ func handleRequests() gin.HandlerFunc {
 			c.JSON(http.StatusServiceUnavailable, gin.H{"error": "Main instance is down", "message": msg})
 		}
 		if fwdResponse != nil {
-			c.JSON(fwdResponse.StatusCode, fwdResponse.Body)
+			body, _ := ioutil.ReadAll(fwdResponse.Body)
+			rawJSON := json.RawMessage(body)
+			c.JSON(fwdResponse.StatusCode, rawJSON)
 			defer fwdResponse.Body.Close()
 		}
 	}
