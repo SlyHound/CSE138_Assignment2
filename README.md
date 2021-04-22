@@ -40,6 +40,6 @@ In order to run the unit tests, run `go test -v`
 
 ## Team Contributions
 - Oleksiy Omelchenko: worked on Part 1 to ensure that GET, PUT, and DELETE requests worked fine for requests sent to a single Docker container. He also provided the Dockerfile needed for the Go files to function correctly in an isolated environment.
-- Jackie: worked on Part 2
-- Zach: worked on building tests
+- Jackie: ensured that part 2 was working where requests were either sent to the forwarding container and finally to the main container or were sent straight to the main container.
+- Zach: built robust tests to ensure that our program works in situations which weren't previously tested by either part 1 or part 2 of the testing script.
 
