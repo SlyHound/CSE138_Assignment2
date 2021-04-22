@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"os"
 	"src/utility"
 
@@ -14,6 +15,8 @@ const (
 
 func setupRouter(kvStore map[string]string) *gin.Engine {
 	router := gin.Default()
+	gin.SetMode(gin.ReleaseMode)
+	gin.DefaultWriter = ioutil.Discard
 	// if there is a forwarding address, then we the forwarding instance is running & //
 	// therefore we can forward requests to the main instance //
 	if os.Getenv("FORWARDING_ADDRESS") != "" {
