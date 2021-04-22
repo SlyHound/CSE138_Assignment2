@@ -9,7 +9,8 @@
 - [Go Web Framework: Gin](https://github.com/gin-gonic/gin)
 - [Go Package: http](https://golang.org/pkg/net/http/)
 - [How To Correctly Serialize JSON String In Golang](https://goinbigdata.com/how-to-correctly-serialize-json-string-in-golang/)
-
+- [Testing APIs in Golang using apitest](https://dev.to/eminetto/testing-apis-in-golang-using-apitest-1860)
+- [How to write Unit Tests in Go](https://www.reddit.com/rpan/r/RedditSessions/mvx4i4?related=home)
 
 ## Team Contributions
 - Alex: worked on Part 1
